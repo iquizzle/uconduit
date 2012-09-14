@@ -37,7 +37,7 @@ translate([-100,-100,40]) stepper_motor_mount(17);
 translate([100,100,40]) stepper_motor_mount(17);
 
 //upper motors
-translate([120,-120,270]) rotate([0,-90,0]) stepper_motor_mount(17);
+translate([120,-120,270]) rotate([-90,0,0]) stepper_motor_mount(17);
 translate([-120,120,270]) rotate([0,90,0]) stepper_motor_mount(17);
 
 //upper linear rods
