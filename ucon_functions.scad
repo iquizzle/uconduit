@@ -106,37 +106,23 @@ rotate(315)
 translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
 }}
 
-module quadflat1CapNut(xpos,ypos,zpos,xdim,ydim,thickness){
+module quadflat1CapNut(xpos,ypos,zpos,xdim,ydim,thickness,dist){
 translate([xpos,ypos,zpos])
 difference(){
 quadflatFlange1(0,0,0,xdim,ydim,thickness);
 
-if (thickness>20){
-
 rotate(45)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-12]) rotate([0,0,-45]) nutSlot(6,0.25);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.25);
 
 rotate(135)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-12]) rotate([0,0,45]) nutSlot(6,0.25);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.25);
 
 rotate(225)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-12]) rotate([0,0,-45]) nutSlot(6,0.25);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.25);
 
 rotate(315)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-12]) rotate([0,0,45]) nutSlot(6,0.25);}
-else{
-rotate(45)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) rotate([0,0,-45]) nutSlot(6,0.25);
-
-rotate(135)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) rotate([0,0,45]) nutSlot(6,0.25);
-
-rotate(225)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) rotate([0,0,-45]) nutSlot(6,0.25);
-
-rotate(315)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) rotate([0,0,45]) nutSlot(6,0.25);}
-}}
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.25);}
+}
 
 module flatFlange2(xpos,ypos,zpos,xdim,ydim,thickness){
 translate([xpos,ypos,zpos])
