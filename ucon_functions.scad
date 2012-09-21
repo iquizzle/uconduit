@@ -86,6 +86,25 @@ rotate(240)
 translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
 }}
 
+module quadflatPlate1(xpos,ypos,zpos,xdim,ydim,thickness){
+translate([xpos,ypos,zpos])
+difference(){
+cube([xdim,ydim,thickness],center=true);
+cylinder(h=thickness+clearance,r=tubeOD/2,center=true);
+
+rotate(45)
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
+
+rotate(135)
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
+
+rotate(225)
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
+
+rotate(315)
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
+}}
+
 module quadflatFlange1(xpos,ypos,zpos,xdim,ydim,thickness){
 translate([xpos,ypos,zpos])
 difference(){
