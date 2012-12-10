@@ -3,6 +3,8 @@ use <ucon_functions.scad>
 use <MCAD/motors.scad>
 use <MCAD/nuts_and_bolts.scad>
 
+$fn=100;
+
 module rtriangle(side,thickness){
 difference(){
 cube([side,side,thickness],center=true);
@@ -10,6 +12,7 @@ translate(sqrt(2)*side/4*[1,-1,0]) rotate([0,0,45]) cube([4*side,side,thickness+
 }}
 
 
+rotate([-90,0,0]) rotate([0,0,45]) translate([-42.3/2,-42.3/2,0])
 difference(){
 
 translate([42.3/2,42.3/2,0])

@@ -1,6 +1,6 @@
 include <ucon_config.scad>
 use <MCAD/nuts_and_bolts.scad>
-
+$fn=100;
 
 module fillet(rad,height){
 
@@ -26,6 +26,8 @@ module oring(xpos,ypos,zpos){
 translate([xpos,ypos,zpos])
 rotate_extrude(convexity = 10, $fn = 100) 
 translate([oringOD/2-oringthick, 0, 0]) 
+// make oring twice as thick as normal, then add half thickness on implementation
+// for smooth compression cutouts
 circle(r = oringthick, angle=60, $fn = 100);
 }
 
@@ -75,7 +77,7 @@ translate([xpos,ypos,zpos])
 difference(){
 cube([xdim,ydim,thickness],center=true);
 cylinder(h=thickness+clearance,r=tubeOD/2,center=true);
-oring(0,0,thickness/2);
+oring(0,0,thickness/2+oringthick/2);
 
 translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
 
@@ -110,7 +112,7 @@ translate([xpos,ypos,zpos])
 difference(){
 cube([xdim,ydim,thickness],center=true);
 cylinder(h=thickness+clearance,r=tubeOD/2,center=true);
-oring(0,0,thickness/2);
+oring(0,0,thickness/2+oringthick/2);
 
 rotate(45)
 translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
@@ -147,13 +149,13 @@ module flatFlange2(xpos,ypos,zpos,xdim,ydim,thickness){
 translate([xpos,ypos,zpos])
 difference(){
 flatFlange1(0,0,0,xdim,ydim,thickness);
-oring(0,0,-thickness/2);}}
+oring(0,0,-thickness/2-oringthick/2);}}
 
 module quadflatFlange2(xpos,ypos,zpos,xdim,ydim,thickness){
 translate([xpos,ypos,zpos])
 difference(){
 quadflatFlange1(0,0,0,xdim,ydim,thickness);
-oring(0,0,-thickness/2);}}
+oring(0,0,-thickness/2-oringthick/2);}}
 
 module singleFlange(xpos,ypos,zpos,length,flat=0){
 translate([xpos,ypos,zpos])

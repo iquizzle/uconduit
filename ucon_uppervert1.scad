@@ -3,6 +3,8 @@ use <ucon_functions.scad>
 use <MCAD/motors.scad>
 use <MCAD/nuts_and_bolts.scad>
 
+$fn=100;
+
 module rtriangle(side,thickness){
 difference(){
 cube([side,side,thickness],center=true);
@@ -38,11 +40,11 @@ translate([0,0,37.3]) cube(42.3,center=true);
 union(){
 //add 
 
-translate([-35/2,42.3/2,0]) rotate([-90,90,0]) quadflat1CapNut(0,0,0,35,35,42.3,14);
+translate([-36/2,42.3/2,0]) rotate([-90,90,0]) quadflat1CapNut(0,0,0,35,36,42.3,14);
 difference(){
-translate([42.3/2,-35/2,0]) rotate([0,90,0]) quadflat1CapNut(0,0,0,35,35,42.3,14);
+translate([42.3/2,-36/2,0]) rotate([0,90,0]) quadflat1CapNut(0,0,0,35,36,42.3,14);
 translate([42.3/2,-42.3/2-35+15,35/2-2.5+15]) rotate([180-45,0,0]) slot_motor_mount();}
-translate([-35/2,-35/2,0]) rotate([0,0,90]) quadflatFlange2(0,0,0,35+0.05,35+0.05,35);
+translate([-36/2,-36/2,0]) rotate([0,0,90]) quadflatFlange2(0,0,0,36,36,35);
 
 
 difference(){

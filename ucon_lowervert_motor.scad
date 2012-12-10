@@ -2,6 +2,8 @@ include <ucon_config.scad>
 use <ucon_functions.scad>
 use <MCAD/motors.scad>
 
+$fn=100;
+
 module slot_head(rad,height,slot){
 union(){
 for (i=[-slot/2:0.5:slot/2]){
@@ -14,15 +16,17 @@ translate([-15.5,-15.5,0]) rotate([0,0,-45]) slot_head(1.75,10,1);
 translate([15.5,-15.5,0]) rotate([0,0,-45]) slot_head(1.75,10,1);
 translate([-15.5,15.5,0]) rotate([0,0,-45]) slot_head(1.75,10,1);
 cylinder(h=50,r=14);
+translate([1,1,0]) cylinder(h=50,r=14);
 translate([2,2,0]) cylinder(h=50,r=14);
 }
 
+rotate([180,0,0])
 union(){
-translate([-35/2,42.3/2,0]) rotate([-90,90,0]) quadflat1CapNut(0,0,0,35,35,42.3,12);
+translate([-36/2,42.3/2,0]) rotate([-90,90,0]) quadflat1CapNut(0,0,0,35,36,42.3+0.05,12);
 
-translate([42.3/2,-35/2,0]) rotate([0,90,0]) quadflat1CapNut(0,0,0,35,35,42.3,12);
+translate([42.3/2,-36/2,0]) rotate([0,90,0]) quadflat1CapNut(0,0,0,35,36,42.3+0.05,12);
 
-translate([-35/2,-35/2,0]) rotate([0,0,90]) quadflatFlange2(0,0,0,35+0.05,35+0.05,35);
+translate([-36/2,-36/2,0]) rotate([0,0,90]) quadflatFlange2(0,0,0,36,36,35);
 
 translate([42.3/2,42.3/2,35/2-2.5])
 difference(){
