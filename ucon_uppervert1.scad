@@ -63,7 +63,7 @@ rotate([0,0,-45]) translate([-5.75,-5.75,-15/2-0.1]) rotate([0,0,15]) nutHole(4,
 
 translate([13.2,13.2,0]) rotate([0,0,45]) cube([37.05,87.05,55.2],center=true);
 translate([-8,-8,0]) rotate([0,0,90]) rtriangle(27,55.2);
-translate([0.14,0.14,0]) cylinder(h=100,r=4,center=true);
+translate([0.14,0.14,0]) cylinder(h=100,r=4.75,center=true);
 translate([13/1.414,-13/1.414,0]) rotate([0,0,45]) rotate([0,90,0]) cylinder(h=30,r=2.05,center=true);
 translate([-13/1.414,13/1.414,0]) rotate([0,0,45]) rotate([0,90,0]) cylinder(h=30,r=2.05,center=true);
 translate([-13/1.414,13/1.414,0]) translate([-5.7,-5.7,0]) rotate([0,0,-45]) rotate([90,0,0]) nutHole(4,tolerance=0.1);

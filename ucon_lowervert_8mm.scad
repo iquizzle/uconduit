@@ -13,11 +13,11 @@ translate(sqrt(2)*side/4*[1,-1,0]) rotate([0,0,45]) cube([4*side,side,thickness+
 
 rotate([180,0,0])
 union(){
-translate([-36/2,42.3/2,0]) rotate([-90,90,0]) quadflat1CapNut(0,0,0,35,36,42.3+0.05,12);
+translate([-35.5/2,42.3/2,0]) rotate([-90,90,0]) quadflat1CapNut(0,0,0,35,35.5,42.3+0.05,12);
 
-translate([42.3/2,-36/2,0]) rotate([0,90,0]) quadflat1CapNut(0,0,0,35,36,42.3+0.05,12);
+translate([42.3/2,-35.5/2,0]) rotate([0,90,0]) quadflat1CapNut(0,0,0,35,35.5,42.3+0.05,12);
 
-translate([-36/2,-36/2,0]) rotate([0,0,90]) quadflatFlange2(0,0,0,36,36,35);
+translate([-35.5/2,-35.5/2,0]) rotate([0,0,90]) quadflatFlange2(0,0,0,35.5,35.5,35);
 
 translate([42.3/2,42.3/2,35/2-7.5])
 difference(){
