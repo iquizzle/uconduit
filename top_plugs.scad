@@ -27,8 +27,8 @@ module clips(){
 difference(){
 union(){
 cylinder(r=21/2,h=clipheight,center=true);
-translate([0,0,clipheight/2-2]) cylinder(r1=23/2,r2=21/2,h=2);
-translate([0,0,clipheight/2-4]) cylinder(r1=21/2,r2=23/2,h=2);
+translate([0,0,clipheight/2-2]) cylinder(r1=22/2,r2=21/2,h=2);
+translate([0,0,clipheight/2-4]) cylinder(r1=21/2,r2=22/2,h=2);
 }
 cylinder(r=18/2,h=clipheight+1, center=true);
 cube([4,30,30],center=true);
