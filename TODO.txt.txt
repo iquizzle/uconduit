@@ -1,8 +1,8 @@
 Things to design after frame assembly:
 
-- Clips for holding x-y rods
+X Clips for holding x-y rods
 - Clips for mounting for z linear rods
-- Bearing/bushing and xy axis belt guides
+X Bearing/bushing and xy axis belt guides
 - Z-axis mounts for bed
 - Printer head
 - Bowden extruder (probably adapt from a current design)

@@ -10,8 +10,8 @@ top = true;    // Set to true if printing top vertex
 
 //////////////////////////////////////
 
-rotate([0,0,0]) translate([0,0,0]) halfvertex(isX=false,top=top);
-translate([-8,-6,0]) rotate([0,0,180]) halfvertex(isX=true,top=top);
+translate([3,0,35]) rotate([0,180,180]) halfvertex(isX=false,top=top);
+translate([0,32,0]) rotate([0,0,180]) halfvertex(isX=true,top=top);
 if (top == true) translate([5,-15,35/2]) rotate([-90,0,0]) motor_clamps();
 
 //rotate([0,0,0]) translate([0,0,0]) halfvertex(isX=false,top=top);
@@ -29,30 +29,23 @@ slot_motor_mount();}
 
 translate([35/2+15+15/2+2.75,35/2-35/2,35/2]) rotate([0,90,0]) quadflatPlate1(0,0,0,35.01,35,20,10);
 translate([0,0,35/2+40+2.75]) quadflatPlate1(0,0,0,35.01,35,20,10);}
-translate([35/2+15/2,15,35+15/2]) cube([15.1,30,15.1],center=true);
+translate([35/2+15-0.25,15,35+15/2]) cube([1.01,30,15.1],center=true);
 translate([35/2-30/2+42,15,35-30/2+42]) cube([30.1,30,30.1],center=true);
+translate([35/2,15,35]) rotate([0,180,0]) rotate([90,0,0]) fillet(4,30);
 }}
 
 module halfvertex(isX=false,top=true){
 union(){
 translate([35/2+15/2,0,35/2]) rotate([0,90,0]) quadflat1CapNut(0,0,0,35+0.01,35+0.01,15,10,nonsym=isX);
 
-if (isX == true){
-union(){
-translate([35/2+42/2,-35/2+5/2,35+42/2])
-rotate([90,0,0])
-difference(){
-translate([-13.5,-13.5,0]) cube([15,15,5],center=true);
-slot_motor_mount();}}}
-
 
 if (isX == true){
-translate([0,35/4+10/2,35/2]) rotate([90,0,0]) quadflatPlate1(0,0,0,35+0.01,35+0.01,35/2+10,10,closed=top,recessed=false);
+translate([0,35/4+5/2,35/2]) rotate([90,0,0]) quadflatPlate1(0,0,0,35+0.01,35+0.01,35/2+5,10,closed=top,recessed=false);
 }
 else{
-translate([0,35/4+10/2,35/2]) rotate([90,0,0]) rotate([0,0,90]) quadflat1CapNut(0,0,0,35+0.01,35+0.01,35/2+10,10);}
+translate([0,35/4+5/2,35/2]) rotate([90,0,0]) rotate([0,0,90]) quadflat1CapNut(0,0,0,35+0.01,35+0.01,35/2+5,10);}
 
-linear_extrude(height=35) polygon([[17.5,35/2+10],[32.5,17.5],[17.5,17.5]]);
+linear_extrude(height=35) polygon([[17.5,35/2+5],[32.5,17.5],[17.5,17.5]]);
 }}
 
 module zmount(key=false,top=true){

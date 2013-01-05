@@ -110,19 +110,19 @@ translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=
 if (recessed == true){
 translate([0,0,-thickness/2+3])
 rotate(45)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=tolerance);
 
 translate([0,0,-thickness/2+3])
 rotate(135)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=tolerance);
 
 translate([0,0,-thickness/2+3])
 rotate(225)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=tolerance);
 
 translate([0,0,-thickness/2+3])
 rotate(315)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=0.1);}
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=tolerance);}
 
 }
 
@@ -187,26 +187,26 @@ if (closed == false) {quadflatFlange1(0,0,0,xdim,ydim,thickness);}
 else {quadflatFlange1Closed(0,0,0,xdim,ydim,thickness);}
 
 rotate(45)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,tolerance);
 
 rotate(135)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,tolerance);
 
 
 if (nonsym == true){
 rotate(315)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,tolerance);
 
 rotate(225)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.1);}
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,tolerance);}
 
 
 else{
 rotate(225)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,tolerance);
 
 rotate(315)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.1);}}
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,tolerance);}}
 }
 
 module flatFlange2(xpos,ypos,zpos,xdim,ydim,thickness){
@@ -247,11 +247,11 @@ module singleFlangeCap(xpos,ypos,zpos,length){
 translate([xpos,ypos,zpos])
 difference(){
 singleFlange(0,0,0,length);
-translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=tolerance);
 rotate(120)
-translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=tolerance);
 rotate(240)
-translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=tolerance);
 }}
 
 module singleFlangeCapClear(xpos,ypos,zpos,len1,flat=0){
@@ -265,15 +265,15 @@ tube(0,0,-length/2-5,tubeOD+wallthick,tubeOD,clearlen+overlap);
 }
 
 for (z = [-length/2-5-0.1:0.5:-length/2-0.1]){
-translate([(tubeOD+screwOD+wallthick)/2,0,z]) rotate(30) nutHole(4,tolerance=0.1);}
+translate([(tubeOD+screwOD+wallthick)/2,0,z]) rotate(30) nutHole(4,tolerance=tolerance);}
 
 for (z = [-length/2-5-0.1:0.5:-length/2-0.1]){
 rotate(120)
-translate([(tubeOD+screwOD+wallthick)/2,0,z]) rotate(30) nutHole(4,tolerance=0.1);}
+translate([(tubeOD+screwOD+wallthick)/2,0,z]) rotate(30) nutHole(4,tolerance=tolerance);}
 
 for (z = [-length/2-5-0.1:0.5:-length/2-0.1]){
 rotate(240)
-translate([(tubeOD+screwOD+wallthick)/2,0,z]) rotate(30) nutHole(4,tolerance=0.1);}
+translate([(tubeOD+screwOD+wallthick)/2,0,z]) rotate(30) nutHole(4,tolerance=tolerance);}
 }}
 
 module blindFlangeCap(xpos,ypos,zpos,length,backwall){
@@ -281,11 +281,11 @@ translate([xpos,ypos,zpos])
 difference(){
 blindFlange(0,0,0,length,backwall);
 
-translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=tolerance);
 rotate(120)
-translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=tolerance);
 rotate(240)
-translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=0.1);
+translate([(tubeOD+screwOD+wallthick)/2,0,-length/2-0.1]) rotate(30) nutHole(4,tolerance=tolerance);
 }}
 
 module shell90(xpos,ypos,zpos){
