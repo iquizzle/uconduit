@@ -88,8 +88,9 @@ rotate(240)
 translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
 }}
 
-module quadflatPlate1(xpos,ypos,zpos,xdim,ydim,thickness){
+module quadflatPlate1(xpos,ypos,zpos,xdim,ydim,thickness,closed=false,recessed=false){
 translate([xpos,ypos,zpos])
+union(){
 difference(){
 cube([xdim,ydim,thickness],center=true);
 cylinder(h=thickness+clearance,r=tubeOD/2,center=true);
@@ -105,6 +106,31 @@ translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=
 
 rotate(315)
 translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
+
+if (recessed == true){
+translate([0,0,-thickness/2+3])
+rotate(45)
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=0.1);
+
+translate([0,0,-thickness/2+3])
+rotate(135)
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=0.1);
+
+translate([0,0,-thickness/2+3])
+rotate(225)
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=0.1);
+
+translate([0,0,-thickness/2+3])
+rotate(315)
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) boltHole(4,length=30,center=true,tolerance=0.1);}
+
+}
+
+if (closed == true){
+translate([0,0,-thickness/2+2.5]) 
+difference(){
+cylinder(r=tubeOD/2+0.5,h=5,center=true);
+cylinder(r=5,h=5.1,center=true);}}
 }}
 
 module quadflatFlange1(xpos,ypos,zpos,xdim,ydim,thickness){
@@ -154,22 +180,33 @@ cylinder(r=5,h=5.1,center=true);}
 
 }}
 
-module quadflat1CapNut(xpos,ypos,zpos,xdim,ydim,thickness,dist){
+module quadflat1CapNut(xpos,ypos,zpos,xdim,ydim,thickness,dist,closed=false,nonsym=false){
 translate([xpos,ypos,zpos])
 difference(){
-quadflatFlange1(0,0,0,xdim,ydim,thickness);
+if (closed == false) {quadflatFlange1(0,0,0,xdim,ydim,thickness);}
+else {quadflatFlange1Closed(0,0,0,xdim,ydim,thickness);}
 
 rotate(45)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.25);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.1);
 
 rotate(135)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.25);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.1);
+
+
+if (nonsym == true){
+rotate(315)
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.1);
 
 rotate(225)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.25);
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.1);}
+
+
+else{
+rotate(225)
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,0.1);
 
 rotate(315)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.25);}
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,0.1);}}
 }
 
 module flatFlange2(xpos,ypos,zpos,xdim,ydim,thickness){
