@@ -6,13 +6,18 @@ $fn=100;
 
 //////// Select Vertex Style ////////
 
-top = true;    // Set to true if printing top vertex
+top = false;    // Set to true if printing top vertex
 
 //////////////////////////////////////
 
 translate([3,0,35]) rotate([0,180,180]) halfvertex(isX=false,top=top);
-translate([0,32,0]) rotate([0,0,180]) halfvertex(isX=true,top=top);
+translate([0,28,0]) rotate([0,0,180]) halfvertex(isX=true,top=top);
 if (top == true) translate([5,-15,35/2]) rotate([-90,0,0]) motor_clamps();
+else{
+translate([3,42,35/2]) rotate([90,0,0]) quadflatPlate1(0,0,0,35.01,35,15,10);
+translate([30,40,35/2]) rotate([0,0,90]) rotate([90,0,0]) quadflatPlate1(0,0,0,35.01,35,15,10);
+
+}
 
 //rotate([0,0,0]) translate([0,0,0]) halfvertex(isX=false,top=top);
 //translate([-35/2,0,35/2]) rotate([0,90,0]) rotate([0,0,180]) halfvertex(isX=true);
