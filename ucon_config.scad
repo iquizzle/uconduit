@@ -1,4 +1,4 @@
-tubeOD = 23.768;	//0.92", thin-wall 3/4" conduit +0.4 clearance
+tubeOD = 0.92*25.4+0.25;	//0.92", thin-wall 3/4" conduit +0.4 clearance
 tubeID = 20.828;	// 0.82", thin-wall 3/4" conduit
 wallthick = 7;		// wall thickness for the tube
 clearOD = 0.5;		// tube clearance

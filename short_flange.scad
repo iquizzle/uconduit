@@ -8,4 +8,5 @@ $fn=100;
 
 rotate([180,0,0])
 
-translate([-35.5/2,42.3/2,0]) rotate([-90,90,0]) quadflat1CapNut(0,0,0,35,35.5,20,12);
+translate([-35.5/2,42.3/2,0]) rotate([180,0,0]) quadflatFlange1(0,0,0,35.1,35.1,16,12);
+translate([-35.5/2,42.3/2,0]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,16,12);
