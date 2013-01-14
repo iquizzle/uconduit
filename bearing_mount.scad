@@ -14,7 +14,7 @@ bearing1H = 5;
 bearing2H = 7;
 
 
-translate([0,0,0]) bearingPlate(bearing=false);
+translate([0,0,0]) bearingPlate(bearing=1);
 //translate([-35-2,0,0]) scale([-1,1,1]) bearingPlate();
 //translate([-35-2,35+2,0]) scale([-1,-1,1]) bearingPlate();
 //translate([0,35+2,0]) scale([1,-1,1]) bearingPlate();
@@ -31,7 +31,7 @@ cylinder(r=bearingOD/2-1,h=100,center=true);
 translate([0,0,2.01]) cylinder(r=bearingOD/2,h=bearingH+10);
 }}
 
-module bearingPlate(bearing=true){
+module bearingPlate(bearing=0){
 
 difference(){
 union(){
@@ -65,7 +65,7 @@ square([12,1],center=true);
 square(35.01,center=true);
 }
 
-if (bearing==true){
+if (bearing==1){
 // align the idler mount
 translate([35/2-pulleyOD/2+bearing2OD/2+nema17/2,-35/2+3,0])
 cube([10,14,10],center=true);
@@ -76,38 +76,45 @@ fillet(6,10);
 
 translate([35/2-pulleyOD/2+bearing2OD/2+nema17/2+10/2-0.5,-8.5,0]) rotate([0,0,180-85]) 
 fillet(6,10);}
+
+if (bearing==2){
+// align the idler mount
+rotate([0,0,180])
+translate([-35/2+pulleyOD/2-bearing2OD/2-nema17/2,-35/2+3,0])
+cube([10,14,10],center=true);
+
+rotate([0,0,180])
+// warning -- manually aligned
+translate([-35/2+pulleyOD/2-bearing2OD/2-nema17/2+10/2,-12.5,0]) rotate([0,0,90-17]) 
+fillet(6,10);
+
+rotate([0,0,180])
+translate([-35/2+pulleyOD/2-bearing2OD/2-nema17/2-10/2+0.5,-8.5,0]) rotate([0,0,-5]) 
+fillet(6,10);}
+
 }
 
 
-if (bearing==true){
+if (bearing==1){
 translate([35/2-pulleyOD/2+bearing2OD/2+nema17/2,-35/2,0])
 rotate([90,0,0]) cylinder(r=2+tolerance,h=30,center=true);
 
 translate([35/2-pulleyOD/2+bearing2OD/2+nema17/2,-35/2+8,0])
 rotate([90,0,0]) rotate([0,0,90]) nutSlot(12,tolerance);}
 
-//translate([-35/2+6,0,0]) cube([35.2,35.2,30],center=true);
-}
+else if (bearing==2){
+rotate([0,0,180])
+translate([-35/2+pulleyOD/2-bearing2OD/2-nema17/2,-35/2,0])
+rotate([90,0,0]) cylinder(r=2+tolerance,h=30,center=true);
+
+rotate([0,0,180])
+translate([-35/2+pulleyOD/2-bearing2OD/2-nema17/2,-35/2+8,0])
+rotate([90,0,0]) rotate([0,0,90]) nutSlot(12,tolerance);}
 
 }
 
-module bearingPlate1(){
-difference(){
-union(){
-quadflatPlate1(0,0,0,35.01,35,12,10);
-
-// align
-translate([35/2+pulleyOD/2+bearing2OD/2,0,0])
-cube([12.01,12.01,12.01],center=true);
-
-translate([0,35/2+6,0]) cube([12.01,12.01,12.01],center=true);
 }
-translate([-35/2+12/2,35/2+12/2,0]) cylinder(r=4,h=20,center=true);
-translate([-35/2+12/2-6,35/2+12/2,0]) cube([25,1.01,13.01],center=true);
-//translate([-35/2+12/2-10,35/2+12/2+4,0]) rotate([90,0,0]) cylinder(r=2+tolerance,h=50,center=true);
-translate([0,35/2+7,0]) rotate([90,0,0]) nutSlot(20,tolerance);
-translate([0,20,0]) rotate([90,0,0]) cylinder(r=2+tolerance,h=40,center=true);
-}}
+
 
 module fillet(rad,height){
 translate([-rad,-rad,0])

@@ -14,28 +14,9 @@ bearingH = 5;
 xoffset=10;
 
 
-//difference(){
-//color("Blue",0.9) cylinder(r=tubeOD/2,h=100,center=true);
-//color("Blue",0.9) cylinder(r=tubeID/2,h=101,center=true);}
-//color("DarkGreen") translate([-35/2+12/2,35/2+12/2,0]) cylinder(r=4,h=100,center=true);
-//color("OrangeRed") translate([-35/2+12/2,35/2+12/2,10.5]) cylinder(r=8,h=10.5,center=true);
-//bearingPlate();
-//translate([0,bearingH+4+35/2+drop,0]) rotate([90,0,0]) bottom_clip();
-
-//translate([30,0,5]) xend1();
-//translate([30,0,0]) bearing_offset();
-translate([0,0,0]) xend2();
+translate([-10,0,0]) xend1();
+translate([10,0,0]) xend2();
 //cross_section(16,10);
-//bearing_offset();
-//cylinder(r=4,h=100,center=true);
-//color("Blue") translate([35/2+10,0,5/2]) quadflatFlange1(0,0,0,35.01,35.01,5,35/2);
-
-module bearing_offset(){
-difference(){
-union(){
-//cylinder(r=6,h=3,center=false);
-cylinder(r=4,h=8.5,center=false);}
-cylinder(r=2,h=40,center=true);}}
 
 
 module xend1(){
@@ -44,16 +25,22 @@ union(){
 difference(){
 union(){
 cross_section(16,10);
+translate([-xoffset,-8-9/2+2,0]) cylinder(r=9/2,h=10,center=true);
 translate([-xoffset-8-12/2,0,0]) cube([12,8,10],center=true);}
+translate([-xoffset,0,4]) cylinder(r=17.5/2,h=30);
+translate([-xoffset,0,0]) cylinder(r=16/2,h=30,center=true);
+translate([-xoffset,-8-9/2+1.75,0]) cylinder(r=2+tolerance,h=30,center=true);
 rotate([0,0,180]) translate([-9.5,-25,5.1]) rotate([90,0,0]) rotate([0,0,90]) fillet(4,12);
 translate([4,0,0]) rotate([90,0,0]) cylinder(r=2,h=24,center=true);
 translate([-xoffset-8-12/2-2,0,0]) rotate([90,0,0]) cylinder(r=2,h=20,center=true);
 translate([4,-9,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
 translate([4,-7,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
-translate([4,7,0]) rotate([90,0,0]) nutSlot(10,tolerance);
+translate([4,8.5,0]) rotate([90,0,0]) nutSlot(10,tolerance);
 translate([0,0,0]) cube([100,1,20],center=true);
 translate([0,15,-10/2]) rotate([0,90,0]) cylinder(r=4,h=50,center=true);
+translate([0,15,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4,h=50,center=true,$fn=6);
 translate([0,35,-10/2]) rotate([0,90,0]) cylinder(r=4,h=50,center=true);
+translate([0,35,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4,h=50,center=true,$fn=6);
 }
 
 translate([0,25+2+12/2,10/2+bearingOD/2-0.01])
@@ -72,9 +59,11 @@ translate([0,-2,-6.5-0.1]) rotate([0,90,0]) fillet(5,12);}
 translate([0,0,bearingOD/2-4]) rotate([90,0,0]) cylinder(r=2,h=10,center=true);}}
 
 translate([-8,25,1.85]) rotate([0,180,0]) boltHole(4,tolerance=tolerance);
+translate([-8,25,1.35]) rotate([0,180,0]) boltHole(4,tolerance=tolerance);
 translate([-8,25,2.5]) rotate([0,180,0]) cylinder(r=2+tolerance/2,h=100,center=true);
 
 translate([2,25,1.85]) rotate([0,180,0]) boltHole(4,tolerance=tolerance);
+translate([2,25,1.35]) rotate([0,180,0]) boltHole(4,tolerance=tolerance);
 translate([2,25,2.5]) rotate([0,180,0]) cylinder(r=2+tolerance/2,h=100,center=true);
 }}
 
@@ -85,16 +74,22 @@ union(){
 difference(){
 union(){
 rotate([0,180,0]) cross_section(16,10);
+translate([xoffset,-8-9/2+2,0]) cylinder(r=9/2,h=10,center=true);
 translate([xoffset+8+12/2,0,0]) cube([12,8,10],center=true);}
+translate([xoffset,0,4]) cylinder(r=17.5/2,h=30);
+translate([xoffset,0,0]) cylinder(r=16/2,h=30,center=true);
+translate([xoffset,-8-9/2+1.75,0]) cylinder(r=2+tolerance,h=30,center=true);
 rotate([0,0,180]) translate([9.5,-25,5.1]) rotate([90,0,0]) fillet(4,12);
 translate([-4,0,0]) rotate([90,0,0]) cylinder(r=2,h=24,center=true);
 translate([xoffset+8+12/2+2,0,0]) rotate([90,0,0]) cylinder(r=2,h=20,center=true);
 translate([-4,-9,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
 translate([-4,-7,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
-translate([-4,7,0]) rotate([0,0,180]) rotate([90,0,0]) nutSlot(10,tolerance);
+translate([-4,5.5,0]) rotate([0,0,180]) rotate([90,0,0]) nutSlot(10,tolerance);
 translate([0,0,0]) cube([100,1,20],center=true);
 translate([0,15,-10/2]) rotate([0,90,0]) cylinder(r=4,h=50,center=true);
+translate([0,15,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4,h=50,center=true,$fn=6);
 translate([0,35,-10/2]) rotate([0,90,0]) cylinder(r=4,h=50,center=true);
+translate([0,35,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4,h=50,center=true,$fn=6);
 }
 
 translate([0,25+2+12/2,10/2+bearingOD/2-0.01])
