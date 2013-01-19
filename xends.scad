@@ -38,10 +38,10 @@ translate([-xoffset-8-12/2-2,0,0]) rotate([90,0,0]) cylinder(r=2,h=20,center=tru
 //translate([4,-7,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
 //translate([4,8.5,0]) rotate([90,0,0]) nutSlot(10,tolerance);
 translate([-30,0,0]) cube([50,1.5,20],center=true);
-translate([0,15,-10/2]) rotate([0,90,0]) cylinder(r=4+0.25,h=50,center=true);
-translate([0,15,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4+0.25,h=50,center=true,$fn=6);
-translate([0,35,-10/2]) rotate([0,90,0]) cylinder(r=4+0.25,h=50,center=true);
-translate([0,35,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4+0.25,h=50,center=true,$fn=6);
+translate([0,15,-10/2]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true);
+translate([0,15,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true,$fn=6);
+translate([0,35,-10/2]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true);
+translate([0,35,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true,$fn=6);
 }
 
 translate([0,25+2+12/2,11/2+bearingOD/2-0.01])
@@ -88,10 +88,10 @@ translate([xoffset+8+12/2+2,0,0]) rotate([90,0,0]) cylinder(r=2,h=20,center=true
 //translate([-4,-7,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
 //translate([-4,5.5,0]) rotate([0,0,180]) rotate([90,0,0]) nutSlot(10,tolerance);
 translate([30,0,0]) cube([50,1.5,20],center=true);
-translate([0,15,-10/2]) rotate([0,90,0]) cylinder(r=4+0.25,h=50,center=true);
-translate([0,15,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4.25,h=50,center=true,$fn=6);
-translate([0,35,-10/2]) rotate([0,90,0]) cylinder(r=4+0.25,h=50,center=true);
-translate([0,35,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4.25,h=50,center=true,$fn=6);
+translate([0,15,-10/2]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true);
+translate([0,15,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4.1,h=50,center=true,$fn=6);
+translate([0,35,-10/2]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true);
+translate([0,35,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4.1,h=50,center=true,$fn=6);
 }
 
 translate([0,25+2+12/2,11/2+bearingOD/2-0.01])
