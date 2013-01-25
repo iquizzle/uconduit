@@ -14,22 +14,30 @@ bearing1H = 5;
 bearing2H = 7;
 
 
-translate([0,0,0]) bearingPlate(bearing=1);
+//translate([0,0,0]) bearingPlate(bearing=1);
 //translate([-35-2,0,0]) scale([-1,1,1]) bearingPlate();
 //translate([-35-2,35+2,0]) scale([-1,-1,1]) bearingPlate();
 //translate([0,35+2,0]) scale([1,-1,1]) bearingPlate();
 
-//translate([0,0,0]) rotate([0,0,0]) bearingFender();
+translate([0,0,0]) rotate([0,0,0]) bearingFender();
 
 module bearingFender(){
 difference(){
 union(){
-cylinder(r=bearingOD/2+2,h=bearingH+9);
-cylinder(r1=bearingOD/2+4,r2=bearingOD/2+2,h=4);
-translate([0,0,bearingH+9-4]) cylinder(r2=bearingOD/2+4,r1=bearingOD/2+2,h=4);}
-cylinder(r=bearingOD/2-1,h=100,center=true);
-translate([0,0,2.01]) cylinder(r=bearingOD/2,h=bearingH+10);
-}}
+cylinder(r=bearing2OD/2,h=bearing2H+9);
+cylinder(r1=bearing2OD/2+2,r2=bearing2OD/2,h=4);
+translate([0,0,bearing2H+9-4]) cylinder(r2=bearing2OD/2+2,r1=bearing2OD/2,h=4);}
+cylinder(r=(bearing2OD-8)/2,h=100,center=true);
+translate([0,0,2.01]) cylinder(r=(bearing2OD-3.9)/2,h=bearing2H+10);
+}
+
+difference(){
+union(){
+cylinder(r=13/2,h=2);
+cylinder(r=8/2-0.1,h=8);}
+cylinder(r=2+0.1,h=30,center=true);}
+
+}
 
 module bearingPlate(bearing=0){
 
