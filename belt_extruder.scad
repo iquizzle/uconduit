@@ -4,6 +4,33 @@ use <MCAD/motors.scad>
 use <MCAD/nuts_and_bolts.scad>
 $fn=100;
 
+/////// Parametric Calculation ////////
+
+/// Enter pulley diameters
+bigP = 37.69;    // large pulley diameter
+smallP = 22.4;  // small pulley diameter
+belt_len = 94*2;  // for gt2 pulleys #of teeth x 2mm pitch
+
+
+// Calculate parameters for pulley separation
+Aval = (belt_len/2)-0.7855*(bigP+smallP);
+Bval = Aval/(bigP-smallP);
+
+///// Calculate the correction factor
+///// fit from tabulated data @ http://www.york-ind.com/print_cat/engineering.pdf
+corr = 0.001937038323*pow(Bval,10) - 0.05808154202*pow(Bval,9) + 0.761293059*pow(Bval,8) - 5.736122913*pow(Bval,7) + 27.47727309*pow(Bval,6) - 87.33413058*pow(Bval,5) + 186.371874*pow(Bval,4) - 263.6175218*pow(Bval,3) + 236.7515116*pow(Bval,2) - 122.301777*pow(Bval,1) + 28.86267614;
+
+// Calculate the pulley separation distance
+Cval = Aval/corr;
+
+echo(Aval);
+echo(Bval);
+echo(Cval);
+echo(corr);
+motor_maxdist = 34.85;  //ctc dist from motor center to hob center
+block_offset = Cval - motor_maxdist;
+echo(block_offset);
+
 /////////////////////idler params//////////////////
 
 variant=0; //0 for metric
@@ -94,42 +121,44 @@ idler_long_side=idler_long_top+idler_long_bottom;
 ////////////////////////////////////////////////////
 
 
-translate([5,12,0]) rotate([0,90,0]) large_pulley_w_hob();
+/*translate([5,12,0]) rotate([0,90,0]) large_pulley_w_hob();
 translate([1.35,12,0]) rotate([0,90,0]) 608_bearing();
 translate([-17,12,0]) rotate([0,90,0]) 608_bearing();
 translate([-8,12+22/2+8/2-0.5,0]) rotate([0,90,0]) 608_bearing();
 translate([-8,16.5,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);
 translate([0,-52+42.3/2,-5]) rotate([0,90,0]) stepper_w_pulley();
-translate([6,22,-34]) rotate([90,0,0]) rotate([0,-90,0]) wadeidler();
+translate([6,22,-34]) rotate([90,0,0]) rotate([0,-90,0]) wadeidler();*/
+
+//translate([30,-8,0]) cube([1,90,1],center=true);
 
 union(){
 difference(){
 union(){
 extruder_base();
 
-// Position so that ctc separation is ~44mm for 94t belt
-translate([-9,10,0]) rotate([0,0,180]) extruder_block();
+// Position the extruder block
+translate([-9,block_offset,0]) rotate([0,0,180]) extruder_block();
 
 // Add mounts for hinge
-translate([-8,19,11/2-42.3/2-5.5]) cube([12.5,26,8],center=true);
-translate([-8,27,-17]) rotate([0,90,0]) cylinder(r=10/2,h=12.5,center=true);
-translate([-14.20,21,11/2-42.3/2-5.5]) rotate([0,0,-90]) fillet(2,8);
-translate([-1.825,21,11/2-42.3/2-5.5]) rotate([0,0,180]) fillet(2,8);
+translate([-8,9+block_offset,11/2-42.3/2-5.5]) cube([12.5,26,8],center=true);
+translate([-8,17+block_offset,-17]) rotate([0,90,0]) cylinder(r=10/2,h=12.5,center=true);
+translate([-14.20,11+block_offset,11/2-42.3/2-5.5]) rotate([0,0,-90]) fillet(2,8);
+translate([-1.825,11+block_offset,11/2-42.3/2-5.5]) rotate([0,0,180]) fillet(2,8);
 }
 
 /// Make a hole for the filament 3.5mm wide w/ a little slot room
-for (i = [0:0.25:0.75]){
-translate([-8,16.75-i,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);}
+for (i = [0:0.25:1.25]){
+translate([-8,block_offset+6.75-i,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);}
 
 // Make a hole for the hotend (j-head style)
-translate([-8,16.75,-20.5]) hotend_w_screws();
+translate([-8,block_offset+6.75,-20.5]) hotend_w_screws();
 
 // Make a hole for the hinge mount
-translate([0,27,-16.5]) rotate([0,90,0]) cylinder(r=3/2+0.2,h=100,center=true);
+translate([0,block_offset+17,-16.5]) rotate([0,90,0]) cylinder(r=3/2+0.2,h=100,center=true);
 }
 
 //Add a solid layer for better prints -- will have to cut hole after
-translate([-8,16.75,-20.75]) cylinder(r=(5/16*25.4)+0.25,h=0.25);}
+translate([-8,block_offset+6.75,-20.75]) cylinder(r=(5/16*25.4)+0.25,h=0.25);}
 
 module extruder_block(){
 difference(){
@@ -167,8 +196,8 @@ translate([-1-0.5,-17.75,0]) rotate([0,90,0]) 608_bearing();
 translate([-1+0.5,-17.75,0]) rotate([0,90,0]) 608_bearing();
 
 /// Make a hole for the filament
-for (i = [0:0.25:0.75]){
-translate([-1,-6-i,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);}
+//for (i = [0:0.25:0.75]){
+//translate([-1,-6-i,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);}
 
 // Cut some room for the bearing to press against hob
 translate([-1,-6,0]) color("Blue",1) cube([8,6,12.5],center=true);
@@ -183,8 +212,8 @@ difference(){
 minkowski(){
 difference(){
 
-translate([-11+6,-10,11/2-42.3/2-7]) cube([24,82,15],center=true);
-translate([-8,82/2-10,-19.5]) cube([100,24,10],center=true);}
+translate([-11+6,-15.5+block_offset/2,11/2-42.3/2-7]) cube([24,71+block_offset,15],center=true);
+translate([-8,21+block_offset,-19.5]) cube([100,24,10],center=true);}
 translate([-5+4,0,0]) rotate([0,90,0]) cylinder(r=2,h=4,center=true);}
 
 // Add a slotted motor mount
