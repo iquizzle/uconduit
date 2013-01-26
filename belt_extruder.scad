@@ -6,7 +6,7 @@ $fn=100;
 
 /////// Parametric Calculation ////////
 
-/// Enter pulley diameters
+/// Enter pulley diameters HERE
 bigP = 37.69;    // large pulley diameter
 smallP = 22.4;  // small pulley diameter
 belt_len = 94*2;  // for gt2 pulleys #of teeth x 2mm pitch
@@ -27,7 +27,7 @@ echo(Aval);
 echo(Bval);
 echo(Cval);
 echo(corr);
-motor_maxdist = 34.85;  //ctc dist from motor center to hob center
+motor_maxdist = 34.85;  //ctc dist from motor center to hob center at zero offset
 block_offset = Cval - motor_maxdist;
 echo(block_offset);
 
@@ -238,8 +238,8 @@ color("Gray",1) translate([0,0,18]) rotate([0,180,0]) boltHole(8,length=60,toler
 module hotend_w_screws(){
 union(){
 translate([0,0,-35]) cylinder(r=5/16*25.4+0.25,h=35);
-translate([0,6+3/2-0.25,-4.76-3/2-0.5]) rotate([0,-90,0]) cylinder(r=3/2+0.05,h=50,center=true);
-translate([0,-6-3/2+0.25,-4.76-3/2-0.5]) rotate([0,-90,0]) cylinder(r=3/2+0.05,h=50,center=true);
+translate([0,6+3/2-0.25,-4.76-3/2-0.75]) rotate([0,-90,0]) cylinder(r=3/2+0.05,h=50,center=true);
+translate([0,-6-3/2+0.25,-4.76-3/2-0.75]) rotate([0,-90,0]) cylinder(r=3/2+0.05,h=50,center=true);
 }
 }
 
