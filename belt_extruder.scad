@@ -94,55 +94,109 @@ idler_long_side=idler_long_top+idler_long_bottom;
 ////////////////////////////////////////////////////
 
 
-//translate([5,40/2,0]) rotate([0,90,0]) large_pulley_w_hob();
-//translate([1.35,40/2,0]) rotate([0,90,0]) 608_bearing();
-//translate([-17,40/2,0]) rotate([0,90,0]) 608_bearing();
-//translate([-8,40/2-22/2-8/2-0.5,0]) rotate([0,90,0]) 608_bearing();
-//translate([-8,40/2+-8/2,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);
-//translate([0,-52+42.3/2,-5]) rotate([0,90,0]) stepper_w_pulley2();
+translate([5,12,0]) rotate([0,90,0]) large_pulley_w_hob();
+translate([1.35,12,0]) rotate([0,90,0]) 608_bearing();
+translate([-17,12,0]) rotate([0,90,0]) 608_bearing();
+translate([-8,12+22/2+8/2-0.5,0]) rotate([0,90,0]) 608_bearing();
+translate([-8,16.5,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);
+translate([0,-52+42.3/2,-5]) rotate([0,90,0]) stepper_w_pulley();
+translate([6,22,-34]) rotate([90,0,0]) rotate([0,-90,0]) wadeidler();
 
+union(){
 difference(){
 union(){
+extruder_base();
+
+// Position so that ctc separation is ~44mm for 94t belt
+translate([-9,10,0]) rotate([0,0,180]) extruder_block();
+
+// Add mounts for hinge
+translate([-8,19,11/2-42.3/2-5.5]) cube([12.5,26,8],center=true);
+translate([-8,27,-17]) rotate([0,90,0]) cylinder(r=10/2,h=12.5,center=true);
+translate([-14.20,21,11/2-42.3/2-5.5]) rotate([0,0,-90]) fillet(2,8);
+translate([-1.825,21,11/2-42.3/2-5.5]) rotate([0,0,180]) fillet(2,8);
+}
+
+/// Make a hole for the filament 3.5mm wide w/ a little slot room
+for (i = [0:0.25:0.75]){
+translate([-8,16.75-i,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);}
+
+// Make a hole for the hotend (j-head style)
+translate([-8,16.75,-20.5]) hotend_w_screws();
+
+// Make a hole for the hinge mount
+translate([0,27,-16.5]) rotate([0,90,0]) cylinder(r=3/2+0.2,h=100,center=true);
+}
+
+//Add a solid layer for better prints -- will have to cut hole after
+translate([-8,16.75,-20.75]) cylinder(r=(5/16*25.4)+0.25,h=0.25);}
+
+module extruder_block(){
+difference(){
+minkowski(){
+
+// Main block
+translate([0,0,-4]) cube([20,18,44.3],center=true);
+
+// Contour edges with minkowski
+translate([-1,0,0]) rotate([0,90,0]) cylinder(r=2,h=4,center=true);}
+
+
+// Make slots for the bolts
+/*for (i = [-1.5:0.5:4]){
+translate([7,8,16+i]) rotate([90,0,0]) cylinder(r=3/2+0.2,h=50,center=true);
+}
+
+for (i = [-1.5:0.5:4]){
+translate([-9,8,16+i]) rotate([90,0,0]) cylinder(r=3/2+0.2,h=50,center=true);
+}*/
+translate([-9,8,16]) rotate([90,0,0]) cylinder(r=3/2+0.2,h=50,center=true);
+translate([7,8,16]) rotate([90,0,0]) cylinder(r=3/2+0.2,h=50,center=true);
+translate([-9,5.5,10+16]) rotate([0,0,90]) rotate([0,90,0]) nutSlot(10,0.1,size=3);
+translate([7,5.5,10+16]) rotate([0,0,90]) rotate([0,90,0]) nutSlot(10,0.1,size=3);
+
+// Clear the hobbed bolt
+translate([12,-2,0]) rotate([0,90,0]) large_pulley_w_hob();
+
+// Make spots for the 608 bearings that retain hob
+translate([11.35,-2,0]) rotate([0,90,0]) 608_bearing();
+translate([-13,-2,0]) rotate([0,90,0]) 608_bearing();
+
+// Cut a slot for the 608 bearing that presses on the filament
+translate([-1-0.5,-17.75,0]) rotate([0,90,0]) 608_bearing();
+translate([-1+0.5,-17.75,0]) rotate([0,90,0]) 608_bearing();
+
+/// Make a hole for the filament
+for (i = [0:0.25:0.75]){
+translate([-1,-6-i,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);}
+
+// Cut some room for the bearing to press against hob
+translate([-1,-6,0]) color("Blue",1) cube([8,6,12.5],center=true);
+
+// Clear some unnecessary overhang that won't print well
+translate([11.35,-8,12]) cube([7,20,20],center=true);
+translate([-13,-8,12]) cube([7,20,20],center=true);
+}}
+
+module extruder_base(){
+difference(){
 minkowski(){
 difference(){
-union(){
-translate([-11+4,40/2+16/2-6,-4]) cube([20,18,44.3],center=true);
+
 translate([-11+6,-10,11/2-42.3/2-7]) cube([24,82,15],center=true);
-}
-translate([-8,40/2-22/2-8/2-4,-19.5]) cube([100,24,10],center=true);}
+translate([-8,82/2-10,-19.5]) cube([100,24,10],center=true);}
 translate([-5+4,0,0]) rotate([0,90,0]) cylinder(r=2,h=4,center=true);}
 
-translate([-13+5,12.5,11/2-42.3/2-5.5]) cube([12.5,26,8],center=true);
-translate([-13+5,4.5,-17]) rotate([0,90,0]) cylinder(r=10/2,h=12.5,center=true);}
-translate([0,4.5,-16.5]) rotate([0,90,0]) cylinder(r=3/2+0.2,h=100,center=true);
-
-for (i = [-1.5:0.5:4]){
-translate([0,30,16+i]) rotate([90,0,0]) cylinder(r=3/2+0.2,h=50,center=true);
-}
-
-for (i = [-1.5:0.5:4]){
-translate([-16,30,16+i]) rotate([90,0,0]) cylinder(r=3/2+0.2,h=50,center=true);
-}
-
+// Add a slotted motor mount
 for (i = [-2:0.5:1.5]){
 translate([0,-52+42.3/2+i,-5]) rotate([0,90,0]) stepper_w_pulley2();
 }
 
-translate([5,40/2,0]) rotate([0,90,0]) large_pulley_w_hob();
-translate([4.35,40/2,0]) rotate([0,90,0]) 608_bearing();
-translate([-20,40/2,0]) rotate([0,90,0]) 608_bearing();
-translate([-8,40/2-22/2-8/2-1.0,0]) rotate([0,90,0]) 608_bearing();
-translate([-8,40/2+-8/2,0]) color("Blue",1) cylinder(r=3.5/2,h=100,center=true);
-translate([4.35,14,12]) cube([7,20,20],center=true);
-translate([-20,14,12]) cube([7,20,20],center=true);
-}
+}}
 
-//translate([-22,9.5,-34]) rotate([90,0,0]) rotate([0,90,0]) wadeidler();
-//cube([1,100,1],center=true);
 
 module large_pulley_w_hob(){
 difference(){
-
 union(){
 color("DarkGreen",1) translate([0,0,6]) cylinder(r=37.7/2,h=11.2);
 color("DarkGreen",1) translate([0,0,6]) cylinder(r=43.25/2,h=1);
@@ -152,6 +206,20 @@ cylinder(r=4,h=50,center=true);}
 color("Gray",1) translate([0,0,18]) rotate([0,180,0]) boltHole(8,length=60,tolerance=0.5);
 }
 
+module hotend_w_screws(){
+union(){
+translate([0,0,-35]) cylinder(r=5/16*25.4+0.25,h=35);
+translate([0,6+3/2-0.25,-4.76-3/2-0.5]) rotate([0,-90,0]) cylinder(r=3/2+0.05,h=50,center=true);
+translate([0,-6-3/2+0.25,-4.76-3/2-0.5]) rotate([0,-90,0]) cylinder(r=3/2+0.05,h=50,center=true);
+}
+}
+
+module fillet(rad,height){
+translate([-rad,-rad,0])
+difference(){
+translate([0,0,-height/2]) cube([rad+0.01,rad+0.01,height]);
+cylinder(h=height+1,r=rad,center=true);
+}}
 
 module stepper_w_pulley(){
 stepper_motor_mount(17);
