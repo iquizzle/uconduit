@@ -133,27 +133,7 @@ cylinder(r=tubeOD/2+0.5,h=5,center=true);
 cylinder(r=5,h=5.1,center=true);}}
 }}
 
-module quadflatFlange1(xpos,ypos,zpos,xdim,ydim,thickness){
-translate([xpos,ypos,zpos])
-difference(){
-cube([xdim,ydim,thickness],center=true);
-cylinder(h=thickness+clearance,r=tubeOD/2,center=true);
-oring(0,0,thickness/2+oringthick/2);
-
-rotate(45)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
-
-rotate(135)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
-
-rotate(225)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
-
-rotate(315)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
-}}
-
-module quadflatFlange1Closed(xpos,ypos,zpos,xdim,ydim,thickness){
+module quadflatFlange1(xpos,ypos,zpos,xdim,ydim,thickness,closed=false){
 translate([xpos,ypos,zpos])
 union(){
 difference(){
@@ -171,13 +151,13 @@ rotate(225)
 translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
 
 rotate(315)
-translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);
-}
+translate([(tubeOD+screwOD+wallthick)/2,0,0]) cylinder(h=thickness+clearance,r1=screwOD/2,r2=screwOD/2,center=true);}
+
+if (closed==true){
 translate([0,0,-thickness/2+2.5]) 
 difference(){
 cylinder(r=tubeOD/2+0.5,h=5,center=true);
-cylinder(r=5,h=5.1,center=true);}
-
+cylinder(r=5,h=5.1,center=true);}}
 }}
 
 module quadflat1CapNut(xpos,ypos,zpos,xdim,ydim,thickness,dist,closed=false,nonsym=false){

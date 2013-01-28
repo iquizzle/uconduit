@@ -11,10 +11,21 @@ bushingOD = 16+0.1;
 bushingOD2 = 18;
 bushingL = 11.5;
 hotendsep = 11.65;
+belt_h = 1.75;
+belt_w = 6.5;
 
-translate([15,0,0]) ycarriage();
-translate([-15,0,0]) scale([-1,1,1]) ycarriage();
+//translate([15,0,0]) ycarriage();
+//translate([-15,0,0]) scale([-1,1,1]) ycarriage();
+translate([0,30,3]) belt_clip();
 
+module belt_clip(){
+difference(){cube([36,12,6],center=true);
+//cube([24,12,8],center=true);
+translate([2+hotendsep/2,0,0]) rotate([0,0,0]) cylinder(r=2,h=30,center=true);
+translate([-2-hotendsep/2,0,0]) rotate([0,0,0]) cylinder(r=2,h=30,center=true);
+translate([2+hotendsep/2+7,0,0]) rotate([0,0,0]) cube([belt_h,belt_w,30],center=true);
+translate([-(2+hotendsep/2+7),0,0]) rotate([0,0,0]) cube([belt_h,belt_w,30],center=true);}
+}
 
 module ycarriage(){
 

@@ -7,21 +7,25 @@ $fn=100;
 //////// Select Vertex Style ////////
 
 top = false;    // Set to true if printing top vertex
+type =1;        // Set type to 1 or 2
 
 //////////////////////////////////////
 
 //translate([3,0,35]) rotate([0,180,180]) halfvertex(isX=false,top=top);
 //translate([0,28,0]) rotate([0,0,180]) halfvertex(isX=true,top=top);
-if (top == true) translate([5,-15,35/2]) rotate([-90,0,0]) motor_clamps();
+/*if (top == true) translate([5,-15,35/2]) rotate([-90,0,0]) motor_clamps();
 else{
 translate([-15,40,35/2]) rotate([0,0,0]) quadflatPlate1(0,0,0,35.01,35,15,10);
 translate([30,40,35/2]) rotate([0,0,90]) rotate([0,0,0]) quadflatPlate1(0,0,0,35.01,35,15,10);
 
-}
+}*/
 
 //rotate([0,0,0]) translate([0,0,0]) halfvertex(isX=false,top=top);
 //translate([-35/2,0,35/2]) rotate([0,90,0]) rotate([0,0,180]) halfvertex(isX=true);
 //motor_clamps();
+//rotate([180,0,0]) halfvertex2(top=false);
+//translate([52,-38,0]) rotate([0,180,0]) halfvertex2(top=true);
+rotate([0,0,90]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.01,35,10);
 
 module motor_clamps(){
 difference(){
@@ -51,6 +55,18 @@ else{
 translate([0,35/4+5/2,35/2]) rotate([90,0,0]) rotate([0,0,90]) quadflat1CapNut(0,0,0,35+0.01,35+0.01,35/2+5,10);}
 
 linear_extrude(height=35) polygon([[17.5,35/2+5],[32.5,17.5],[17.5,17.5]]);
+}}
+
+module halfvertex2(isX=true,top=false){
+union(){
+difference(){
+union(){
+translate([35/2+15/2,0,0]) rotate([0,90,0]) quadflat1CapNut(0,0,0,35+0.01,35+0.01,15,10);
+rotate([0,0,90]) translate([35/2+15/2,0,0]) rotate([0,90,0]) quadflat1CapNut(0,0,0,35+0.01,35+0.01,15,10);}
+translate([0,0,-50]) cube([100,100,100],center=true);}
+echo(top);
+translate([0,0,35/4]) rotate([0,180,0]) quadflatFlange1(0,0,0,35+0.01,35+0.01,35/2,closed=top);
+
 }}
 
 module zmount(key=false,top=true){
