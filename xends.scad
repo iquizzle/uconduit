@@ -129,7 +129,7 @@ linear_extrude(height=thickness/2)
 hull(){
 union(){
 translate([-xoffset,0,0]) circle(r=ID/2,center=true);
-translate([0,20,0]) square([3,40],center=true);}}
+translate([0,16,0]) square([3,48],center=true);}}
 cylinder(r=minkwid,h=thickness/2,center=true);}
 
 translate([-xoffset,0,0]) cylinder(r=ID/2,h=100.5,center=true);

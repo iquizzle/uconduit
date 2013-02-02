@@ -157,7 +157,7 @@ if (closed==true){
 translate([0,0,-thickness/2+2.5]) 
 difference(){
 cylinder(r=tubeOD/2+0.5,h=5,center=true);
-cylinder(r=5,h=5.1,center=true);}}
+cylinder(r=6,h=5.1,center=true);}}
 }}
 
 module quadflat1CapNut(xpos,ypos,zpos,xdim,ydim,thickness,dist,closed=false,nonsym=false){

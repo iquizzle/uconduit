@@ -22,14 +22,14 @@ bearing2H = 7;
 translate([0,0,0]) rotate([0,0,0]) bearingFender();
 
 module bearingFender(){
-/*difference(){
+difference(){
 union(){
 cylinder(r=bearing2OD/2,h=bearing2H+9);
 cylinder(r1=bearing2OD/2+2,r2=bearing2OD/2,h=4);
 translate([0,0,bearing2H+9-4]) cylinder(r2=bearing2OD/2+2,r1=bearing2OD/2,h=4);}
 cylinder(r=(bearing2OD-8)/2,h=100,center=true);
-translate([0,0,4.01]) cylinder(r=(bearing2OD-3.95)/2,h=bearing2H+10);
-}*/
+translate([0,0,5.01]) cylinder(r=(bearing2OD-4)/2,h=bearing2H+10);
+}
 
 difference(){
 union(){
