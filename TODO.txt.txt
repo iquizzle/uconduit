@@ -1,6 +1,6 @@
 TO DO LIST:
 
-- update motor clamps for "soft clamp"
+x update motor clamps for "soft clamp"
 x update x linear rod holders for new xends
 x create new clamps to hold z linear rods
 x create z ends for leadscrew

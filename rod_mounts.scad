@@ -19,7 +19,8 @@ bearing2H = 7;
 //translate([35,35+2,0]) scale([-1,1,1]) yRodMount();
 //translate([-35-2,35+2,0]) scale([-1,-1,1]) yRodMount();
 //translate([0,35+2,0]) scale([1,-1,1]) yRodMount();
-zRodMount();
+rotate([0,0,-45+180]) zRodMount();
+translate([-5,35+16,0]) rotate([0,0,-40]) zRodMount(top=2);
 //translate([0,0,0]) rotate([0,0,0]) bearingFender();
 
 module bearingFender(){

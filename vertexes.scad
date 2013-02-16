@@ -22,9 +22,9 @@ translate([30,40,35/2]) rotate([0,0,90]) rotate([0,0,0]) quadflatPlate1(0,0,0,35
 
 //rotate([0,0,0]) translate([0,0,0]) halfvertex(isX=false,top=top);
 //translate([-35/2,0,35/2]) rotate([0,90,0]) rotate([0,0,180]) halfvertex(isX=true);
-//motor_clamps();
-rotate([180,0,0]) halfvertex2(top=false);
-translate([52,-38,0]) rotate([0,180,0]) halfvertex2(top=true);
+motor_clamps();
+//rotate([180,0,0]) halfvertex2(top=false);
+//translate([52,-38,0]) rotate([0,180,0]) halfvertex2(top=true);
 //rotate([0,0,90]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.01,35,10);
 
 module motor_clamps(){
@@ -36,8 +36,8 @@ difference(){
 cube([42,42,5],center=true);
 slot_motor_mount();}
 
-translate([35/2+15+15/2+2.75,35/2-35/2,35/2]) rotate([0,90,0]) quadflatPlate1(0,0,0,35.01,35,20,10);
-translate([0,0,35/2+40+2.75]) quadflatPlate1(0,0,0,35.01,35,20,10);}
+translate([35/2+15+15/2+2.75,35/2-35/2,35/2]) rotate([0,180,0]) rotate([0,90,0]) quadflatFlange1(0,0,0,35.01,35,20,10);
+translate([0,0,35/2+40+2.75]) rotate([180,0,0]) quadflatFlange1(0,0,0,35.01,35,20,10);}
 translate([35/2+15-0.25,15,35+15/2]) cube([1.01,30,15.1],center=true);
 translate([35/2-30/2+42,15,35-30/2+42]) cube([30.1,30,30.1],center=true);
 translate([35/2,15,35]) rotate([0,180,0]) rotate([90,0,0]) fillet(4,30);
