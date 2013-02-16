@@ -32,7 +32,7 @@ translate([0,0,-11/2]) rotate([0,180,0]) scale([-1,1,1]) xendB();}
 mockbearing();
 
 //subtract the rod clamping pieces
-translate([0,20,0]) cube([1,100,30],center=true);
+translate([0,20,0]) cube([0.5,100,30],center=true);
 translate([-8,25,6]) rotate([0,90,0]) boltHole(4,length=30,tolerance=0.1);
 translate([-7,25,6]) rotate([0,90,0]) boltHole(4,length=30,tolerance=0.1);
 translate([-8,25,6]) rotate([0,90,0]) cylinder(r=2+0.05,h=30);

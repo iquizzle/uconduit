@@ -1,8 +1,12 @@
-Things to design after frame assembly:
+TO DO LIST:
 
-X Clips for holding x-y rods
-- Clips for mounting for z linear rods
-X Bearing/bushing and xy axis belt guides
-- Z-axis mounts for bed
-- Printer head
-- Bowden extruder (probably adapt from a current design)
+- update motor clamps for "soft clamp"
+x update x linear rod holders for new xends
+x create new clamps to hold z linear rods
+x create z ends for leadscrew
+- create z ends for linear rod
+
+Extruder:
+- adapt belt extruder for push to connect feed
+- make mounts for belt extruder to hang on the top inside conduit
+- create a j-head hotend mount
