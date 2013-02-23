@@ -4,7 +4,7 @@ x update motor clamps for "soft clamp"
 x update x linear rod holders for new xends
 x create new clamps to hold z linear rods
 x create z ends for leadscrew
-- create z ends for linear rod
+x create z ends for linear rod
 
 Extruder:
 - adapt belt extruder for push to connect feed

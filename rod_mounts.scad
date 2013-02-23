@@ -10,7 +10,7 @@ bearing2OD = 22+4;  //idler bearingOD w/ fender
 pulleyOD = 25.5; // motor pulleyOD
 nema17 = 42.3; // motor size
 xoff = 10+1.5; // offset of the xend toward the conduit
-zoff = 5;
+zoff = 6.5;
 bearing1H = 5;
 bearing2H = 7;
 
@@ -22,6 +22,7 @@ bearing2H = 7;
 rotate([0,0,-45+180]) zRodMount();
 translate([-5,35+16,0]) rotate([0,0,-40]) zRodMount(top=2);
 //translate([0,0,0]) rotate([0,0,0]) bearingFender();
+//zidler();
 
 module bearingFender(){
 difference(){
@@ -171,6 +172,20 @@ translate([35/2+12,7,0]) rotate([0,90,0]) cylinder(r=2+0.1,h=35,center=true);
 translate([35/2+6.5,7,0]) rotate([0,-90,0]) nutSlot(12,0.1);
 translate([35/2+6.5,-7,0]) rotate([0,-90,0]) nutSlot(12,0.1);}
 }}
+
+module zidler(){
+translate([0,0,-10/2]) linear_extrude(height=10)
+difference(){
+hull(){
+rotate([0,0,45]) square(35,center=true);
+// align the motor pulley and xend bearing to rod center
+translate([42.3/2+35,0,0])
+circle(r=((7/8)*25.4)/2+2,center=true);
+}
+translate([42.3/2+35,0,0])
+circle(r=((7/8)*25.4)/2,center=true);
+}
+}
 
 module fillet(rad,height){
 translate([-rad,-rad,0])

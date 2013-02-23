@@ -22,7 +22,8 @@ translate([30,40,35/2]) rotate([0,0,90]) rotate([0,0,0]) quadflatPlate1(0,0,0,35
 
 //rotate([0,0,0]) translate([0,0,0]) halfvertex(isX=false,top=top);
 //translate([-35/2,0,35/2]) rotate([0,90,0]) rotate([0,0,180]) halfvertex(isX=true);
-motor_clamps();
+rotate([-90,0,0]) motor_clamps();
+translate([-28,-28,0]) rotate([-90,0,0]) motor_clamps();
 //rotate([180,0,0]) halfvertex2(top=false);
 //translate([52,-38,0]) rotate([0,180,0]) halfvertex2(top=true);
 //rotate([0,0,90]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.01,35,10);
