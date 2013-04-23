@@ -6,7 +6,26 @@ $fn=100;
 
 //mid_mount();
 //lower_mount();
-cable_mount();
+cable_mount2();
+
+module cable_mount2(){
+difference(){
+
+union(){
+
+cylinder(r=tubeOD/2+3,h=10);
+translate([0,5/2,10/2]) cube([9,50,10],center=true);
+translate([18/2,0,10/2]) cube([20,12,10],center=true);
+}
+
+translate([0,0,-0.5]) cylinder(r=tubeOD/2,h=21);
+
+translate([-10,-18,20/2-5]) rotate([0,90,0]) cylinder(r=2.1,h=40);
+translate([-10,18+5,20/2-5]) rotate([0,90,0]) cylinder(r=2.1,h=20);
+translate([16,0,10/2]) cube([1.75,4,20],center=true);
+cube([1,100,100],center=true);
+
+}}
 
 module cable_mount(){
 difference(){
