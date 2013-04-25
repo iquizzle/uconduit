@@ -15,15 +15,13 @@ $fn=100;
 ACMENutOD = 20+0.1; // Measure hex nut point-to-point
 ACMENutH = 9.4;
 ACMEScrewOD = (3./8)*25.4;
-BearingH = 15.0;
-BearingOD = 15;
 rod_spacing = 24;
 
 // layout the four parts of a single z-end (two sets required)
 translate([0,0,0]) rotate([0,0,45]) z_end();
 translate([40,0,15.0-ACMENutH-4]) rotate([0,0,45]) z_hexclamp();
-translate([-14,45,BearingH]) rotate([0,180,-90]) bearingHolder();
-translate([32,18,BearingH]) rotate([0,180,-90]) bearingHolder();
+translate([-14,45,bushingL]) rotate([0,180,-90]) bearingHolder();
+translate([32,18,bushingL]) rotate([0,180,-90]) bearingHolder();
 
 
 module z_end(){
@@ -99,12 +97,12 @@ minkowski(){ // round the corners of the part
 
   //make the left wing
   hull(){
-   translate([-8,-8,0]) circle(r=BearingOD/2);
+   translate([-8,-8,0]) circle(r=bushingOD/2);
    translate([8,2,0]) square([1,50]);}
 
   //make the right wing
   hull(){
-   translate([-8,-8,0]) circle(r=BearingOD/2);
+   translate([-8,-8,0]) circle(r=bushingOD/2);
    translate([2,8,0]) square([50,1]);}
 
  // add the "moonlander" hex top
@@ -130,8 +128,8 @@ module bearingHolder(){
   cross_sectionA();
 
   // make a hole for the bearing
-  rotate([0,0,90]) translate([0,0,BearingH/2])
-  translate([rod_spacing/2-1.5,0,0]) cylinder(r=BearingOD/2,h=BearingH+0.05,center=true);
+  rotate([0,0,90]) translate([0,0,bushingL/2])
+  translate([rod_spacing/2-1.5,0,0]) cylinder(r=bushingOD/2,h=bushingL+0.05,center=true);
 
   // make an inset for the hex clamp
   translate([0,42.15,-1]) rotate([0,0,45]) z_hexclamp(noholes=1);}
@@ -139,12 +137,12 @@ module bearingHolder(){
 
 module cross_sectionA(){
  difference(){
-  linear_extrude(height=BearingH)
+  linear_extrude(height=bushingL)
   minkowski(){
    translate([0,14,0]) square([17,23],center=true);
    circle(r=3.05);}
   
   // make 2 holes for M4 mounting screws
-  translate([-26/4-1,rod_spacing/2+14/2+4,-0.1]) cylinder(r=2+0.05,h=BearingH+1,center=false);
-  translate([26/4+1,rod_spacing/2+14/2+4,-0.1]) cylinder(r=2+0.05,h=BearingH+1,center=false);
+  translate([-26/4-1,rod_spacing/2+14/2+4,-0.1]) cylinder(r=2+0.05,h=bushingL+1,center=false);
+  translate([26/4+1,rod_spacing/2+14/2+4,-0.1]) cylinder(r=2+0.05,h=bushingL+1,center=false);
 }}

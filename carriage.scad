@@ -11,12 +11,6 @@ use <MCAD/motors.scad>
 use <MCAD/nuts_and_bolts.scad>
 $fn=100;
 
-// carriage parameters
-rod_spacing = 20;
-bushingOD = 15;
-bushingL = 15.3;
-hotendsep = 11.65;
-
 ycarriage();
 
 

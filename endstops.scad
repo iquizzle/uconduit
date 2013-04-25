@@ -13,7 +13,7 @@ use <MCAD/nuts_and_bolts.scad>
 $fn=100;
 
 // endstop mounting parameters
-mounting_sep = 15.3-7;
+mounting_sep = bushingL-7;
 switch_sep = 9.5;
 
 
