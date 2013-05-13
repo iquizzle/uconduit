@@ -12,9 +12,9 @@ oringOD = 28.702;	// oring size 119 (use 118 for build)
 overlap = 0.05;
 clearlen = 5;
 
-rod_spacing = 20;
-bushingOD = 15;
-bushingL = 15.0;
+rod_spacing = 20; // spacing of rods in the x-ends
+bushingOD = 15;  // LM8UU bushing OD
+bushingL = 15.0; // LM8UU bushing dist between grooves
 screw_sep = bushingOD/2+rod_spacing/2+3;
 hotendsep = 11.65;
 
