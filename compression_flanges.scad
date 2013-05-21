@@ -1,6 +1,6 @@
 /*
 *   CAD file for the UConduit compression flanges. Top flanges (qty 4) are 16mm, 
-*    bottom (qty 8) are 12mm
+*    bottom (qty 8) are 12mm, vertex compression flanges (qty 2) are 10mm
 *
 *  Creative Commons Share Alike 3.0
 *  Copyright (c) 2013 David Lee Miller
@@ -30,3 +30,7 @@ translate([38*3/2,38*3/2,-2]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,12
 translate([38/2,38*5/2,-2]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,12,12);
 translate([-38/2,38*5/2,-2]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,12,12);
 translate([38*3/2,38*5/2,-2]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,12,12);
+
+////// 10mm compression flanges for the vertexes (2 required)  //////
+translate([-38*3/2,38/2,-4]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
+translate([-38*3/2,-38/2,-4]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
