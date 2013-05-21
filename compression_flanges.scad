@@ -1,3 +1,12 @@
+/*
+*   CAD file for the UConduit compression flanges. Top flanges (qty 4) are 16mm, 
+*    bottom (qty 8) are 12mm
+*
+*  Creative Commons Share Alike 3.0
+*  Copyright (c) 2013 David Lee Miller
+* 
+*/
+
 include <ucon_config.scad>
 use <ucon_functions.scad>
 use <MCAD/motors.scad>
