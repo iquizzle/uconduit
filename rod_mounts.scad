@@ -24,7 +24,7 @@ bearing1H = 5; // xend 624 bearingH w/ fender
 bearing2H = 7; // idler 608 bearingH w/ fender
 
 //// Choose rod mounts (0=Y, 1=Z, 2=idler) ////
-type = 2;
+type = 0;
 
 //////////////////////////////////////////////////
 
