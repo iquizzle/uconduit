@@ -1,3 +1,10 @@
+/*
+*   CAD file for the UConduit xends. 4 parts per xends, 4 624 bearings and 2 lm8uu's used.
+*
+*  Creative Commons Share Alike 3.0
+*  Copyright (c) 2013 David Lee Miller
+* 
+*/
 include <ucon_config.scad>
 use <ucon_functions.scad>
 use <MCAD/motors.scad>
@@ -5,134 +12,117 @@ use <MCAD/nuts_and_bolts.scad>
 $fn=100;
 
 
-width = 12;
-drop = 15;
-tolerance = 0.05;
-bearingOD = 13;
-bearingID = 4;
-bearingH = 5;
 xoffset=10;
+bearing624OD = 13;
 
-rotate([0,90,0])
-union(){
-translate([0,0,11/2-0.001]) xend1();
-translate([0,0,-11/2]) rotate([0,180,0]) scale([-1,1,1]) xend1();}
+translate([22,-16,-6]) xendA();
+translate([-22,-16,-6]) xendA();
+xendB();
 
 
-
-module xend1(){
-difference(){
-union(){
-difference(){
-union(){
-cross_section(16,11);
-translate([-xoffset,-8-9/2+2,0]) cylinder(r=9/2,h=11,center=true);
-translate([-xoffset-8-12/2,0,0]) cube([12,8,11],center=true);}
-translate([-xoffset,0,4]) cylinder(r=18/2,h=30);
-translate([-xoffset,0,0]) cylinder(r=16/2,h=30,center=true);
-translate([-xoffset,-8-9/2+1.75,0]) cylinder(r=2+tolerance,h=30,center=true);
-translate([-xoffset,0,0]) rotate([0,0,130]) translate([0,-8-9/2+1.75,0]) cylinder(r=2+tolerance,h=30,center=true);
-rotate([0,0,180]) translate([-6.5,-25,5.6]) rotate([90,0,0]) rotate([0,0,90]) fillet(4,12);
-//translate([4,0,0]) rotate([90,0,0]) cylinder(r=2,h=24,center=true);
-translate([-xoffset-8-12/2-2,0,0]) rotate([90,0,0]) cylinder(r=2,h=20,center=true);
-//translate([4,-9,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
-//translate([4,-7,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
-//translate([4,8.5,0]) rotate([90,0,0]) nutSlot(10,tolerance);
-translate([-30,0,0]) cube([50,1.5,20],center=true);
-translate([0,15,-11/2]) rotate([0,90,0]) cylinder(r=4+0.05,h=50,center=true);
-//translate([0,15,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true,$fn=6);
-translate([0,35,-11/2]) rotate([0,90,0]) cylinder(r=4+0.05,h=50,center=true);
-//translate([0,35,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true,$fn=6);
+module xendA(mode=1){
+ difference(){
+  cross_sectionA();
+  rotate([0,0,90]) rodsnbushings(mode=mode);
+ }
 }
 
-translate([0,25+2+12/2,11/2+bearingOD/2-0.01])
-difference(){
-rotate([0,0,180]) 
-union(){
-cube([12,4,bearingOD],center=true);
-translate([0,-2,-6.5-0.1]) rotate([0,90,0]) fillet(5,12);}
-translate([0,0,bearingOD/2-4]) rotate([90,0,0]) cylinder(r=2,h=10,center=true);}
-
-translate([0,25-2-12/2,11/2+bearingOD/2-0.01])
-difference(){
-union(){
-cube([12,4,bearingOD],center=true);
-translate([0,-2,-6.5-0.1]) rotate([0,90,0]) fillet(5,12);}
-translate([0,0,bearingOD/2-4]) rotate([90,0,0]) cylinder(r=2,h=10,center=true);}}
-
-//translate([-8,25,1.85+0.5]) rotate([0,180,0]) boltHole(4,tolerance=tolerance);
-//translate([-8,25,1.35+0.5]) rotate([0,180,0]) boltHole(4,tolerance=tolerance);
-//translate([-8,25,2.5]) rotate([0,180,0]) cylinder(r=2+tolerance/2,h=100,center=true);
-
-//translate([2,25,1.85+0.5]) rotate([0,180,0]) boltHole(4,tolerance=tolerance);
-//translate([2,25,1.35+0.5]) rotate([0,180,0]) boltHole(4,tolerance=tolerance);
-//translate([2,25,2.5]) rotate([0,180,0]) cylinder(r=2+tolerance/2,h=100,center=true);
-}}
-
-module xend2(){
-
-difference(){
-union(){
-difference(){
-union(){
-rotate([0,180,0]) cross_section(16,11);
-translate([xoffset,-8-9/2+2,0]) cylinder(r=9/2,h=11,center=true);
-translate([xoffset+8+12/2,0,0]) cube([12,8,11],center=true);}
-translate([xoffset,0,4]) cylinder(r=18/2,h=30);
-translate([xoffset,0,0]) cylinder(r=16/2,h=30,center=true);
-translate([xoffset,-8-9/2+1.75,0]) cylinder(r=2+tolerance,h=30,center=true);
-translate([xoffset,0,0]) rotate([0,0,-130]) translate([0,-8-9/2+1.75,0]) cylinder(r=2+tolerance,h=30,center=true);
-rotate([0,0,180]) translate([9.5,-25,5.1]) rotate([90,0,0]) fillet(4,12);
-//translate([-4,0,0]) rotate([90,0,0]) cylinder(r=2,h=24,center=true);
-translate([xoffset+8+12/2+2,0,0]) rotate([90,0,0]) cylinder(r=2,h=20,center=true);
-//translate([-4,-9,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
-//translate([-4,-7,0]) rotate([0,180,0]) rotate([90,0,0]) boltHole(4,length=10,tolerance=tolerance);
-//translate([-4,5.5,0]) rotate([0,0,180]) rotate([90,0,0]) nutSlot(10,tolerance);
-translate([30,0,0]) cube([50,1.5,20],center=true);
-translate([0,15,-10/2]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true);
-translate([0,15,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4.1,h=50,center=true,$fn=6);
-translate([0,35,-10/2]) rotate([0,90,0]) cylinder(r=4+0.1,h=50,center=true);
-translate([0,35,-10/2]) scale([1,1,1.18]) rotate([30,0,0]) rotate([0,90,0]) cylinder(r=4.1,h=50,center=true,$fn=6);
+module cross_sectionA(){
+ difference(){
+  linear_extrude(height=bushingL)
+  minkowski(){
+   translate([0,14.5,0]) square([13,23],center=true);
+   circle(r=3.05);
+  }
+  translate([-16/4-1,24/2+16/2+4,-0.1]) cylinder(r=2+0.05,h=bushingL+1,center=false);
+  translate([16/4+1,24/2+16/2+4,-0.1]) cylinder(r=2+0.05,h=bushingL+1,center=false);
+  translate([-10,20,bushingL/2+4]) cube([20,20,bushingL]);
+ }
 }
 
-translate([0,25+2+12/2,11/2+bearingOD/2-0.01])
-difference(){
-rotate([0,0,180]) 
-union(){
-cube([12,4,bearingOD],center=true);
-translate([0,-2,-6.5-0.1]) rotate([0,90,0]) fillet(5,12);}
-translate([0,0,bearingOD/2-4]) rotate([90,0,0]) cylinder(r=2,h=10,center=true);}
+module xendB(){
+ difference(){
+  rotate([0,90,0])
+  union(){
+   translate([0,0,11/2-0.001]) xendB_profile();
+   translate([0,0,-11/2]) rotate([0,180,0]) scale([-1,1,1]) xendB_profile();
+  }
+  bearing_clear();
 
-translate([0,25-2-12/2,11/2+bearingOD/2-0.01])
-difference(){
-union(){
-cube([12,4,bearingOD],center=true);
-translate([0,-2,-6.5-0.1]) rotate([0,90,0]) fillet(5,12);}
-translate([0,0,bearingOD/2-4]) rotate([90,0,0]) cylinder(r=2,h=10,center=true);}}
+  //subtract the rod clamping pieces
+  translate([0,20,0]) cube([0.5,100,30],center=true);
+  translate([-8,25,6]) rotate([0,90,0]) boltHole(4,length=30,tolerance=0.1);
+  translate([-7,25,6]) rotate([0,90,0]) boltHole(4,length=30,tolerance=0.1);
+  translate([-8,25,6]) rotate([0,90,0]) cylinder(r=2+0.05,h=30);
+  translate([-7,42,4.5]) rotate([0,90,0]) boltHole(4,length=30,tolerance=0.1);
+  translate([-8,42,4.5]) rotate([0,90,0]) boltHole(4,length=30,tolerance=0.1);
+  translate([-8,42,4.5]) rotate([0,90,0]) cylinder(r=2+0.05,h=30);
+  translate([7,25,6]) rotate([0,-90,0]) nutSlot(10,0.1);
+ }
+}
 
-translate([-2,25,1.25]) rotate([0,180,0]) nutSlot(12,tolerance);
-translate([-2,25,0.75]) rotate([0,180,0]) nutSlot(12,tolerance);
-translate([-2,25,2.5]) rotate([0,180,0]) cylinder(r=2,h=100,center=true);
 
-translate([8,25,1.25]) rotate([0,0,180]) rotate([0,180,0]) nutSlot(12,tolerance);
-translate([8,25,0.75]) rotate([0,0,180]) rotate([0,180,0]) nutSlot(12,tolerance);
-translate([8,25,2.5]) rotate([0,180,0]) cylinder(r=2,h=100,center=true);
-}}
+module bearing_clear(){
+ union(){
+  union(){
+   translate([-5.5,-2,13.05]) cube([11.1,bushingOD+5.1,bushingOD+4.1],center=true);
+   translate([-17.5+3.2,-2,8.55]) cube([17.5+0.01-11,bushingOD+5.1,bushingOD+13.1],center=true);
+  }
+  translate([0,-2,0]) rotate([0,0,180])
+  union(){
+   translate([-5.5,0,13.05]) cube([11.1,bushingOD+5.1,bushingOD+4.1],center=true);
+   translate([-17.5+3.2,0,8.55]) cube([17.5-11,bushingOD+5.1,bushingOD+13.1],center=true);
+  }
+  translate([0,4,-1]) rotate([0,90,0]) cylinder(r=2.05,h=100,center=true);
+  translate([0,-6,-1]) rotate([0,90,0]) cylinder(r=2.05,h=100,center=true);
+ }
+}
 
-module cross_section(ID,thickness,minkwid=4.5)
-translate([0,0,-thickness/4])
-difference(){
+module xendB_profile(){
+ difference(){
+  union(){
+   difference(){
+    cross_sectionB(11);
+    rotate([0,0,180]) translate([-6.5,-25,5.6]) rotate([90,0,0]) rotate([0,0,90]) fillet(4,12);
+    translate([-xoffset-8-12/2-2,0,0]) rotate([90,0,0]) cylinder(r=2,h=20,center=true);
+    translate([0,15,-11/2]) rotate([0,90,0]) cylinder(r=4+0.05,h=50,center=true);
+    translate([0,35,-11/2]) rotate([0,90,0]) cylinder(r=4+0.05,h=50,center=true);
+   }
 
-minkowski(){
-linear_extrude(height=thickness/2)
+   translate([0,25+2+12/2,11/2+bearing624OD/2-0.01])
+   difference(){
+    rotate([0,0,180]) 
+    union(){
+     cube([12,4,bearing624OD],center=true);
+     translate([0,-2,-6.5-0.1]) rotate([0,90,0]) fillet(5,12);
+    }
+    translate([0,0,bearing624OD/2-4]) rotate([90,0,0]) cylinder(r=2,h=10,center=true);
+   }
 
-hull(){
-union(){
-translate([-xoffset,0,0]) circle(r=ID/2,center=true);
-translate([0,16,0]) square([3,48],center=true);}}
-cylinder(r=minkwid,h=thickness/2,center=true);}
+   translate([0,25-2-12/2,11/2+bearing624OD/2-0.01])
+   difference(){
+    union(){
+     cube([12,4,bearing624OD],center=true);
+     translate([0,-2,-6.5-0.1]) rotate([0,90,0]) fillet(5,12);
+    }
+    translate([0,0,bearing624OD/2-4]) rotate([90,0,0]) cylinder(r=2,h=10,center=true);
+   }
+  }
+ }
+}
 
-translate([-xoffset,0,0]) cylinder(r=ID/2,h=100.5,center=true);
+module cross_sectionB(thickness,minkwid=4.5){
+ translate([0,0,-thickness/4])
+ minkowski(){
+  linear_extrude(height=thickness/2)
+  translate([-3.5,18,0]) square([10,50],center=true);
+  cylinder(r=minkwid,h=thickness/2,center=true);
+ }
+}
+
+module rodsnbushings(mode=1){
+ translate([0,0,bushingL/2])
+ translate([12-1.5,0,0]) cylinder(r=bushingOD/2,h=bushingL+0.05,center=true);
 }
 
 module fillet(rad,height){
@@ -140,38 +130,4 @@ translate([-rad,-rad,0])
 difference(){
 translate([0,0,-height/2]) cube([rad+0.01,rad+0.01,height]);
 cylinder(h=height+1,r=rad,center=true);
-}}
-
-module bearingPlate(){
-union(){
-quadflatPlate1(0,0,0,35.01,35,bearingID+4,10);
-
-difference(){
-translate([-35/2+12/2-4,35/2+12/2,0]) cube([20.01,12.01,12.01],center=true);
-translate([-35/2+12/2,35/2+12/2,0]) cylinder(r=4,h=20,center=true);
-translate([-35/2+12/2-6,35/2+12/2,0]) cube([25,1.01,13.01],center=true);
-//translate([-35/2+12/2-10,35/2+12/2+4,0]) rotate([90,0,0]) boltHole(4,length=20,tolerance=tolerance);
-translate([-35/2+12/2-10,35/2+12/2+4,0]) rotate([90,0,0]) cylinder(r=2+tolerance,h=50,center=true);
-//translate([-35/2+12/2-10,35/2+12/2-4,0]) rotate([90,0,0]) rotate([0,0,30]) nutHole(4,length=20,tolerance=tolerance);
-}
-
-translate([0,35/2+drop/2,0]) rotate([90,0,0]) 
-difference(){
-union(){
-cylinder(r=bearingID/2+2,h=drop,center=true);
-translate([0,0,1.5]) cube([12,12,12],center=true);}
-cylinder(r=2+tolerance,h=drop+1,center=true);
-translate([-10,0,-drop/2+5]) nutSlot(20,tolerance);}}}
-
-
-module bottom_clip(){
-difference(){
-union(){
-cylinder(r=bearingOD/2+3,h=4,center=true);
-translate([0,0,3]) cylinder(r=bearingID/2+2,h=2+0.01,center=true);
-translate([0,0,bearingH/2+4]) cylinder(r=bearingID/2,h=bearingH+0.01,center=true);
-
-}
-translate([0,0,1]) boltHole(4,length=30,tolerance=tolerance);
-cylinder(r=4/2+tolerance,h=60, center=true);
 }}
