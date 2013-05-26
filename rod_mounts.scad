@@ -24,7 +24,7 @@ bearing1H = 5; // xend 624 bearingH w/ fender
 bearing2H = 7; // idler 608 bearingH w/ fender
 
 //// Choose rod mounts (0=Y, 1=Z, 2=idler) ////
-type = 0;
+type = 2;
 
 //////////////////////////////////////////////////
 
@@ -52,23 +52,16 @@ module bearingFender(){
    cylinder(r1=bearing2OD/2+2,r2=bearing2OD/2,h=4);
    translate([0,0,bearing2H+9-4]) cylinder(r2=bearing2OD/2+2,r1=bearing2OD/2,h=4);}
   cylinder(r=(bearing2OD-8)/2,h=100,center=true);
-  translate([0,0,5.01]) cylinder(r=(bearing2OD-4)/2,h=bearing2H+10);
+  translate([0,0,2.01]) cylinder(r=(bearing2OD-4)/2,h=bearing2H+10);
  }
 
  difference(){
   union(){
-   cylinder(r=13/2,h=2);
-   cylinder(r=8/2,h=(7+2)/2);}
-   cylinder(r=2+0.1,h=30,center=true);
+   cylinder(r=6,h=2);
+   cylinder(r=8/2,h=16);
+   }
+   cylinder(r=2+0.2,h=36,center=true);
  }
-
-  translate([0,24,0])
-  difference(){
-   union(){
-   cylinder(r=13/2,h=2);
-   cylinder(r=8/2,h=(7+2)/2);}
-   cylinder(r=2+0.1,h=30,center=true);
-  }
 }
 
 module yRodMount(bearing=0){ // bearing option creates a mount point for the idler

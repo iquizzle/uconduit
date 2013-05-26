@@ -168,10 +168,13 @@ else {quadflatFlange1Closed(0,0,0,xdim,ydim,thickness);}
 
 rotate(45)
 translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,tolerance);
+rotate(45)
+translate([(tubeOD+screwOD+wallthick)/2,2.75,thickness/2-dist]) rotate([0,0,-45]) cube([10,10,3.2+tolerance]);
 
 rotate(135)
 translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,tolerance);
-
+rotate(135)
+translate([(tubeOD+screwOD+wallthick)/2,-2.75,thickness/2-dist]) rotate([0,0,-45]) cube([10,10,3.2+tolerance]);
 
 if (nonsym == true){
 rotate(315)
@@ -184,9 +187,14 @@ translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nu
 else{
 rotate(225)
 translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,-45]) nutSlot(6,tolerance);
+rotate(225)
+translate([(tubeOD+screwOD+wallthick)/2,2.75,thickness/2-dist]) rotate([0,0,-45]) cube([10,10,3.2+tolerance]);
 
 rotate(315)
-translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,tolerance);}}
+translate([(tubeOD+screwOD+wallthick)/2,0,thickness/2-dist]) rotate([0,0,45]) nutSlot(6,tolerance);
+rotate(315)
+translate([(tubeOD+screwOD+wallthick)/2,-2.75,thickness/2-dist]) rotate([0,0,-45]) cube([10,10,3.2+tolerance]);
+}}
 }
 
 module flatFlange2(xpos,ypos,zpos,xdim,ydim,thickness){
