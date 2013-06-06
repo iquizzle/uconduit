@@ -65,12 +65,12 @@ module xendB(){
 module bearing_clear(){
  union(){
   union(){
-   translate([-5.5,-2,13.05]) cube([11.1,bushingOD+5.1,bushingOD+4.1],center=true);
+   translate([-5.5,-2,3.55+8.9]) cube([11.1,bushingOD+5.1,bushingOD+4.1],center=true);
    translate([-17.5+3.2,-2,8.55]) cube([17.5+0.01-11,bushingOD+5.1,bushingOD+13.1],center=true);
   }
   translate([0,-2,0]) rotate([0,0,180])
   union(){
-   translate([-5.5,0,13.05]) cube([11.1,bushingOD+5.1,bushingOD+4.1],center=true);
+   translate([-5.5,0,3.55+8.9]) cube([11.1,bushingOD+5.1,bushingOD+4.1],center=true);
    translate([-17.5+3.2,0,8.55]) cube([17.5-11,bushingOD+5.1,bushingOD+13.1],center=true);
   }
   translate([0,4,-1]) rotate([0,90,0]) cylinder(r=2.05,h=100,center=true);
