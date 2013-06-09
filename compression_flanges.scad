@@ -32,8 +32,8 @@ translate([-38/2,38*5/2,0]) rotate([0,0,0]) quadflatPlate1(0,0,0,35.1,35.1,16,12
 translate([38*3/2,38*5/2,0]) rotate([0,0,0]) quadflatPlate1(0,0,0,35.1,35.1,16,12);
 
 ////// 10mm compression flanges for the vertexes (4 required)  //////
-translate([-38*3/2,38/2,-4]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
-translate([-38*3/2,-38/2,-4]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
-translate([-38*3/2,38*3/2,-4]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
-translate([-38*3/2,38*5/2,-4]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
+translate([-38*3/2,38/2,-3]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
+translate([-38*3/2,-38/2,-3]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
+translate([-38*3/2,38*3/2,-3]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
+translate([-38*3/2,38*5/2,-3]) rotate([0,0,0]) quadflatFlange1(0,0,0,35.1,35.1,10,12);
 

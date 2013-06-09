@@ -16,7 +16,7 @@ bearingSize = 22;
 innerHole = 9;
 
 //crowned_pulley();
-spacer(18);
+spacer(16);
 //translate([0,30,0]) crowned_pulley();
 //translate([0,30,0]) spacer(5);
 
