@@ -18,7 +18,7 @@ switch_sep = 9.5;
 
 
 // set type to 1 if carriage endstop mount, 2 if 8mm rod mount
-type = 1;
+type = 2;
 
 if(type == 1) carriage_endstop();
 else rotate([0,90,0]) outer_endstop();
