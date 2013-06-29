@@ -16,8 +16,9 @@ $fn=100;
 // choose 0 for M4 screw mounts
 // choose 1 for mounting 00str00der
 // choose 2 for zip tie mounts
+// choose 3 for belt drive wades
 
-type = 1;
+type = 3;
 
 ////////////////////////////////////////////
 
@@ -27,10 +28,12 @@ if (type == 0){
 else if (type == 1){
  lower_mount();
 }
-else{
+else if (type == 2){
  cable_mount2();
 }
-
+else{
+ bdw_mount();
+}
 
 module cable_mount2(){
  difference(){
@@ -49,6 +52,22 @@ module cable_mount2(){
  }
 }
 
+module bdw_mount(){
+ difference(){
+  union(){
+   cylinder(r=tubeOD/2+3,h=10);
+   translate([0,5/2-1.5,10/2]) cube([9,47,10],center=true);
+   translate([18/2-0.5,12,10/2]) cube([12,25,10],center=true);
+  }
+
+  translate([0,0,-0.5]) cylinder(r=tubeOD/2,h=21);
+
+  translate([-10,-18,20/2-5]) rotate([0,90,0]) cylinder(r=2.1,h=40);
+  translate([-10,20,20/2-5]) rotate([0,90,0]) cylinder(r=2.1,h=40);
+  translate([16,0,10/2]) cube([1.75,4,20],center=true);
+  cube([1,100,100],center=true);
+ }
+}
 
 module cable_mount(){
  difference(){
