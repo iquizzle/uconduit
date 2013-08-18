@@ -125,7 +125,7 @@ translate([415/2-42.3/2,-375/2+42.3/2,375-13]) rotate([0,180,0]) stepper_motor_m
 
 //idlers
 color("DarkSlateGray",0.9) translate([-415/2+42.3+3,375/2-42.3/2,375-33]) rotate([0,0,0]) import("idler.stl");
-color("DarkSlateGray",0.9) translate([415/2-42.3+3,-375/2+42.3/2,375-33]) rotate([0,0,0]) import("idler.stl");
+color("DarkSlateGray",0.9) translate([415/2-42.3-3,-375/2+42.3/2,375-33]) rotate([0,0,0]) import("idler.stl");
 
 // xends
 color("Black",0.9) translate([-22.5,-375/2+21,375]) rotate([0,90,0]) import("xend_bearing.stl");
