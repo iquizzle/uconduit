@@ -6,8 +6,8 @@
 *  Copyright (c) 2013 David Lee Miller
 * 
 */
-include <ucon_config.scad>
-use <ucon_functions.scad>
+include <../ucon_config.scad>
+use <../ucon_functions.scad>
 use <MCAD/motors.scad>
 use <MCAD/nuts_and_bolts.scad>
 $fn=50;
@@ -25,7 +25,7 @@ difference(){
   translate([-bushingL/2-3,-3-16.5,0]) cube([2*bushingL+24,23,(5/8)*25.4+base_h]);  //groove mount
   translate([left_offset,-4.5/2+1.5,base_h+(5/16)*25.4+6+3/2+0.25]) rotate([0,-90,0]) 
    cylinder(r=8/2+0.3,h=2*bushingL+24,center=true); // add material for top M3 screw to hold jhead
-  translate([left_offset,-23.5,4]) cube([2*bushingL+24,9,9],center=true); // top cube for belt clip mounts
+  translate([left_offset,-23.5,4.5]) cube([2*bushingL+24,9,9],center=true); // top cube for belt clip mounts
  }
  // M4 screws for belt clip mounts
  translate([0,-2.5,4]) rotate([0,90,0]) cylinder(r=2+0.05,h=100,center=true);
